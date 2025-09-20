@@ -1,10 +1,10 @@
-# Network Basics 1
+# 🌐 Network Basics 1
 
-## Overview
+## 📋 Overview
 
 This directory contains Bash scripts for network configuration and monitoring tasks as part of the Holberton School Network curriculum. These scripts demonstrate fundamental network operations including DNS configuration, IP address discovery, and port listening.
 
-## Repository Information
+## 📁 Repository Information
 
 - **Repository**: `holbertonschool-network`
 - **Directory**: `basics_1`
@@ -13,30 +13,30 @@ This directory contains Bash scripts for network configuration and monitoring ta
 
 ---
 
-## Scripts
+## 🔧 Scripts
 
-### 0. Change Your Home IP
+### 0️⃣ Change Your Home IP
 **File**: `0-change_your_home_IP`
 
-#### Description
+#### 📝 Description
 A Bash script that configures DNS resolution by modifying the `/etc/hosts` file to customize how specific domains resolve locally.
 
-#### Requirements
+#### ✅ Requirements
 - `localhost` must resolve to `127.0.0.2`
 - `facebook.com` must resolve to `8.8.8.8`
 
-#### Functionality
+#### ⚙️ Functionality
 1. **Backup Creation**: Creates a backup of the original `/etc/hosts` file as `/etc/hosts.backup`
 2. **Entry Removal**: Removes any existing entries for `localhost` and `facebook.com`
 3. **Custom Resolution**: Adds new DNS resolution entries
 4. **Safe Implementation**: Uses temporary files to ensure atomic updates
 
-#### Usage
+#### 💻 Usage
 ```bash
 sudo ./0-change_your_home_IP
 ```
 
-#### Example Output
+#### 📊 Example Output
 **Before running the script:**
 ```bash
 $ ping localhost
@@ -67,7 +67,7 @@ PING facebook.com (8.8.8.8) 56(84) bytes of data.
 
 ---
 
-### 1. Show Attached IPs
+### 1️⃣ Show Attached IPs
 **File**: `1-show_attached_IPs`
 
 #### Description
@@ -91,12 +91,12 @@ A Bash script that displays all active IPv4 IP addresses currently attached to t
 10.0.0.15
 ```
 
-#### Technical Implementation
+#### 🛠️ Technical Implementation
 ```bash
 ifconfig | grep -oE 'inet ([0-9]{1,3}\.){3}[0-9]{1,3}' | cut -d' ' -f2
 ```
 
-#### Use Cases
+#### 🎯 Use Cases
 - Network troubleshooting
 - System inventory
 - Configuration verification
@@ -104,7 +104,7 @@ ifconfig | grep -oE 'inet ([0-9]{1,3}\.){3}[0-9]{1,3}' | cut -d' ' -f2
 
 ---
 
-### 2. Port Listening on Localhost
+### 2️⃣ Port Listening on Localhost
 **File**: `2-port_listening_on_localhost`
 
 #### Description
@@ -125,7 +125,7 @@ A Bash script that creates a network listener on localhost port 98 using netcat.
 nc -l 127.0.0.1 98
 ```
 
-#### Testing the Listener
+#### 🧪 Testing the Listener
 From another terminal:
 ```bash
 # Test connection
@@ -147,26 +147,26 @@ ss -tlnp | grep :98
 
 ---
 
-## Prerequisites
+## 📋 Prerequisites
 
-### System Requirements
+### 💾 System Requirements
 - **Operating System**: Ubuntu/Linux (primary), macOS (compatible)
 - **Shell**: Bash
 - **Privileges**: Root access required for scripts modifying system files
 
-### Required Tools
+### 🛠️ Required Tools
 Ensure the following tools are installed:
 - `ifconfig` (part of net-tools package)
 - `netcat` (`nc` command)
 - `grep`, `cut`, `cp` (standard Unix tools)
 
-#### Installation on Ubuntu
+#### 🐧 Installation on Ubuntu
 ```bash
 sudo apt update
 sudo apt install net-tools netcat-openbsd
 ```
 
-#### Installation on macOS
+#### 🍎 Installation on macOS
 ```bash
 # ifconfig is pre-installed
 # netcat is pre-installed as nc
@@ -175,7 +175,7 @@ brew install grep  # for GNU grep if needed
 
 ---
 
-## File Permissions
+## 🔐 File Permissions
 
 All scripts should be executable:
 ```bash
@@ -186,43 +186,43 @@ chmod +x 2-port_listening_on_localhost
 
 ---
 
-## Safety and Best Practices
+## 🛡️ Safety and Best Practices
 
-### For `0-change_your_home_IP`
+### 🏠 For `0-change_your_home_IP`
 1. **Always backup**: The script creates `/etc/hosts.backup` automatically
 2. **Test environment**: Only use on development/test machines
 3. **Revert changes**: Remember to restore original settings after testing
 4. **Monitor impact**: Some applications may behave differently with modified DNS
 
-### For Network Scripts
+### 🌐 For Network Scripts
 1. **Port conflicts**: Ensure port 98 is not already in use before running the listener
 2. **Firewall settings**: Check firewall rules if connections fail
 3. **Process cleanup**: Remember to stop listening processes when done
 
-### General Security
+### 🔒 General Security
 1. **Privilege escalation**: Only run with elevated privileges when necessary
 2. **Code review**: Always review scripts before execution
 3. **Environment isolation**: Test in isolated environments first
 
 ---
 
-## Troubleshooting
+## 🔧 Troubleshooting
 
-### Common Issues
+### ❓ Common Issues
 
-#### Script Permission Denied
+#### 🚫 Script Permission Denied
 ```bash
 # Make scripts executable
 chmod +x script_name
 ```
 
-#### `/etc/hosts` Modification Fails
+#### 📝 `/etc/hosts` Modification Fails
 ```bash
 # Ensure running with sudo
 sudo ./0-change_your_home_IP
 ```
 
-#### `ifconfig` Command Not Found
+#### 🔍 `ifconfig` Command Not Found
 ```bash
 # Ubuntu/Debian
 sudo apt install net-tools
@@ -231,7 +231,7 @@ sudo apt install net-tools
 ip addr show
 ```
 
-#### Port Already in Use
+#### 🔌 Port Already in Use
 ```bash
 # Check what's using the port
 sudo netstat -tlnp | grep :98
@@ -241,7 +241,7 @@ sudo ss -tlnp | grep :98
 kill PID
 ```
 
-#### DNS Changes Not Taking Effect
+#### 🌍 DNS Changes Not Taking Effect
 ```bash
 # Flush DNS cache (Ubuntu)
 sudo systemctl restart systemd-resolved
@@ -257,7 +257,7 @@ getent hosts facebook.com
 
 ---
 
-## Learning Objectives
+## 🎓 Learning Objectives
 
 After completing these exercises, you should understand:
 
@@ -269,15 +269,15 @@ After completing these exercises, you should understand:
 
 ---
 
-## Testing and Validation
+## 🧪 Testing and Validation
 
-### Automated Testing
+### 🤖 Automated Testing
 These scripts are designed to pass automated testing systems that verify:
 - Correct DNS resolution changes
 - Proper IP address extraction
 - Successful port binding
 
-### Manual Testing
+### 👨‍💻 Manual Testing
 ```bash
 # Test DNS changes
 ./0-change_your_home_IP
@@ -296,7 +296,7 @@ kill %1  # Stop background listener
 
 ---
 
-## Additional Resources
+## 📚 Additional Resources
 
 - [Linux Network Commands Cheat Sheet](https://www.cyberciti.biz/faq/linux-unix-networking-commands/)
 - [Understanding /etc/hosts File](https://www.howtogeek.com/howto/27350/beginner-geek-how-to-edit-your-hosts-file/)
@@ -305,12 +305,13 @@ kill %1  # Stop background listener
 
 ---
 
-## Author
+## 👨‍💻 Authors
 
-Holberton School Network Curriculum
+- **Héctor Soto** - [@hector17rock](https://github.com/hector17rock)
+- **Holberton School** - Network Curriculum
 
 ---
 
-## License
+## 📄 License
 
 This project is part of the Holberton School curriculum.
