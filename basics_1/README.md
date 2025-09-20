@@ -4,6 +4,61 @@
 
 This directory contains Bash scripts for network configuration and monitoring tasks as part of the Holberton School Network curriculum. These scripts demonstrate fundamental network operations including DNS configuration, IP address discovery, and port listening.
 
+## 📑 Table of Contents
+
+- [🌐 Network Basics 1](#-network-basics-1)
+  - [📋 Overview](#-overview)
+  - [📑 Table of Contents](#-table-of-contents)
+  - [📁 Repository Information](#-repository-information)
+  - [🔧 Scripts](#-scripts)
+    - [0️⃣ Change Your Home IP](#️⃣-change-your-home-ip)
+      - [📝 Description](#-description)
+      - [✅ Requirements](#-requirements)
+      - [⚙️ Functionality](#️-functionality)
+      - [💻 Usage](#-usage)
+      - [📊 Example Output](#-example-output)
+      - [⚠️ Important Notes](#️-important-notes)
+    - [1️⃣ Show Attached IPs](#️⃣-show-attached-ips)
+      - [📝 Description](#-description-1)
+      - [⚙️ Functionality](#️-functionality-1)
+      - [💻 Usage](#-usage-1)
+      - [📊 Example Output](#-example-output-1)
+      - [🛠️ Technical Implementation](#️-technical-implementation)
+      - [🎯 Use Cases](#-use-cases)
+    - [2️⃣ Port Listening on Localhost](#️⃣-port-listening-on-localhost)
+      - [📝 Description](#-description-2)
+      - [⚙️ Functionality](#️-functionality-2)
+      - [💻 Usage](#-usage-2)
+      - [🛠️ Technical Implementation](#️-technical-implementation-1)
+      - [🧪 Testing the Listener](#-testing-the-listener)
+      - [🎯 Use Cases](#-use-cases-1)
+  - [📋 Prerequisites](#-prerequisites)
+    - [💾 System Requirements](#-system-requirements)
+    - [🛠️ Required Tools](#️-required-tools)
+      - [🐧 Installation on Ubuntu](#-installation-on-ubuntu)
+      - [🍎 Installation on macOS](#-installation-on-macos)
+  - [🔐 File Permissions](#-file-permissions)
+  - [🛡️ Safety and Best Practices](#️-safety-and-best-practices)
+    - [🏠 For `0-change_your_home_IP`](#-for-0-change_your_home_ip)
+    - [🌐 For Network Scripts](#-for-network-scripts)
+    - [🔒 General Security](#-general-security)
+  - [🔧 Troubleshooting](#-troubleshooting)
+    - [❓ Common Issues](#-common-issues)
+      - [🚫 Script Permission Denied](#-script-permission-denied)
+      - [📝 `/etc/hosts` Modification Fails](#--etchosts-modification-fails)
+      - [🔍 `ifconfig` Command Not Found](#--ifconfig-command-not-found)
+      - [🔌 Port Already in Use](#-port-already-in-use)
+      - [🌍 DNS Changes Not Taking Effect](#-dns-changes-not-taking-effect)
+  - [🎓 Learning Objectives](#-learning-objectives)
+  - [🧪 Testing and Validation](#-testing-and-validation)
+    - [🤖 Automated Testing](#-automated-testing)
+    - [👨‍💻 Manual Testing](#-manual-testing)
+  - [📚 Additional Resources](#-additional-resources)
+  - [👨‍💻 Authors](#-authors)
+  - [📄 License](#-license)
+
+---
+
 ## 📁 Repository Information
 
 - **Repository**: `holbertonschool-network`
