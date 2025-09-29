@@ -1,45 +1,14 @@
 ```mermaid
-sequenceDiagram
-    participant User as 👤 User Browser
-    participant DNS as 🌐 DNS Server
-    participant ISP as 📡 ISP
-    participant Firewall as 🛡️ Firewall
-    participant LB as ⚖️ Load Balancer
-    participant Web as 🌐 Web Server
-    participant App as 💻 App Server
-    participant DB as 🗃️ Database
-
-    Note over User: User types https://www.google.com
-    User->>+DNS: 1. DNS Query: What's the IP for www.google.com?
-    DNS-->>-User: 2. DNS Response: IP is 142.250.191.4
-
-    Note over User,ISP: 3. HTTPS Request (Encrypted with TLS/SSL)
-    User->>+ISP: HTTPS Request to 142.250.191.4:443
-    ISP->>+Firewall: Forward encrypted traffic
-    
-    Note over Firewall: 4. Traffic passes through firewall
-    Firewall->>Firewall: Check security rules
-    Firewall->>+LB: Allow HTTPS traffic on port 443
-    
-    Note over LB: 5. Load balancer distributes request
-    LB->>LB: Select available web server
-    LB->>+Web: Forward request to chosen server
-    
-    Note over Web: 6. Web server receives request
-    Web->>Web: Process HTTPS request
-    Web->>+App: Forward dynamic content request
-    
-    Note over App: 7. Application server generates response
-    App->>+DB: Query for required data
-    DB-->>-App: Return data results
-    App->>App: Generate HTML page
-    App-->>-Web: Send generated web page
-    
-    Note over Web,User: 8. Response travels back (encrypted)
-    Web-->>-LB: Return web page response
-    LB-->>-Firewall: Forward response
-    Firewall-->>-ISP: Pass through firewall
-    ISP-->>-User: Deliver encrypted HTTPS response
-    
-    Note over User: 9. Browser displays www.google.com
+flowchart TD
+    A[User types https://www.google.com] --> B[DNS Resolution]
+    B --> C[Request hits server IP on port 443]
+    C --> D[Traffic is encrypted with HTTPS]
+    D --> E[Request goes through firewall]
+    E --> F[Load balancer distributes request]
+    F --> G[Web server receives request]
+    G --> H[Application server generates web page]
+    H --> I[Application server requests data from database]
+    I --> J[Database returns data]
+    J --> K[Web server serves the web page]
+    K --> L[Response sent back to user]
 ```
