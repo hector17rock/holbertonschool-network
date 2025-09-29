@@ -1,0 +1,35 @@
+```mermaid
+flowchart TD
+    A[User types https://www.google.com in browser] --> B[DNS Resolution]
+    B --> |DNS Query| C[DNS Server returns Google IP address]
+    C --> D[Browser connects to server IP on port 443]
+    
+    D --> E[Traffic is encrypted with HTTPS/TLS]
+    E --> F[Encrypted request goes through firewall]
+    
+    F --> G[Request distributed by load balancer]
+    G --> H[Load balancer selects web server]
+    
+    H --> I[Web server receives request]
+    I --> J[Web server forwards to application server]
+    
+    J --> K[Application server processes request]
+    K --> L[Application server requests data from database]
+    L --> M[Database returns data]
+    M --> N[Application server generates web page]
+    
+    N --> O[Web server serves the web page]
+    O --> P[Response goes back through load balancer]
+    P --> Q[Response passes through firewall]
+    Q --> R[Encrypted response sent to user]
+    R --> S[User sees Google homepage in browser]
+    
+    style A fill:#e1f5fe
+    style B fill:#fff3e0
+    style E fill:#ffecb3
+    style F fill:#ffcdd2
+    style G fill:#f3e5f5
+    style K fill:#e8f5e8
+    style L fill:#fff8e1
+    style S fill:#c8e6c9
+```
