@@ -1,35 +1,45 @@
 ```mermaid
-flowchart TD
-    A[User types https://www.google.com in browser] --> B[DNS Resolution]
-    B --> |DNS Query| C[DNS Server returns Google IP address]
-    C --> D[Browser connects to server IP on port 443]
+sequenceDiagram
+    participant User as 👤 User Browser
+    participant DNS as 🌐 DNS Server
+    participant ISP as 📡 ISP
+    participant Firewall as 🛡️ Firewall
+    participant LB as ⚖️ Load Balancer
+    participant Web as 🌐 Web Server
+    participant App as 💻 App Server
+    participant DB as 🗃️ Database
+
+    Note over User: User types https://www.google.com
+    User->>+DNS: 1. DNS Query: What's the IP for www.google.com?
+    DNS-->>-User: 2. DNS Response: IP is 142.250.191.4
+
+    Note over User,ISP: 3. HTTPS Request (Encrypted with TLS/SSL)
+    User->>+ISP: HTTPS Request to 142.250.191.4:443
+    ISP->>+Firewall: Forward encrypted traffic
     
-    D --> E[Traffic is encrypted with HTTPS/TLS]
-    E --> F[Encrypted request goes through firewall]
+    Note over Firewall: 4. Traffic passes through firewall
+    Firewall->>Firewall: Check security rules
+    Firewall->>+LB: Allow HTTPS traffic on port 443
     
-    F --> G[Request distributed by load balancer]
-    G --> H[Load balancer selects web server]
+    Note over LB: 5. Load balancer distributes request
+    LB->>LB: Select available web server
+    LB->>+Web: Forward request to chosen server
     
-    H --> I[Web server receives request]
-    I --> J[Web server forwards to application server]
+    Note over Web: 6. Web server receives request
+    Web->>Web: Process HTTPS request
+    Web->>+App: Forward dynamic content request
     
-    J --> K[Application server processes request]
-    K --> L[Application server requests data from database]
-    L --> M[Database returns data]
-    M --> N[Application server generates web page]
+    Note over App: 7. Application server generates response
+    App->>+DB: Query for required data
+    DB-->>-App: Return data results
+    App->>App: Generate HTML page
+    App-->>-Web: Send generated web page
     
-    N --> O[Web server serves the web page]
-    O --> P[Response goes back through load balancer]
-    P --> Q[Response passes through firewall]
-    Q --> R[Encrypted response sent to user]
-    R --> S[User sees Google homepage in browser]
+    Note over Web,User: 8. Response travels back (encrypted)
+    Web-->>-LB: Return web page response
+    LB-->>-Firewall: Forward response
+    Firewall-->>-ISP: Pass through firewall
+    ISP-->>-User: Deliver encrypted HTTPS response
     
-    style A fill:#e1f5fe
-    style B fill:#fff3e0
-    style E fill:#ffecb3
-    style F fill:#ffcdd2
-    style G fill:#f3e5f5
-    style K fill:#e8f5e8
-    style L fill:#fff8e1
-    style S fill:#c8e6c9
+    Note over User: 9. Browser displays www.google.com
 ```
