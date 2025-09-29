@@ -1,0 +1,12 @@
+flowchart TD
+    A[User types https://www.google.com] --> B[DNS Resolution]
+    B --> C[Request hits server IP on port 443]
+    C --> D[Traffic is encrypted with HTTPS]
+    D --> E[Request goes through firewall]
+    E --> F[Load balancer distributes request]
+    F --> G[Web server receives request]
+    G --> H[Application server generates web page]
+    H --> I[Application server requests data from database]
+    I --> J[Database returns data]
+    J --> K[Web server serves the web page]
+    K --> L[Response sent back to user]
